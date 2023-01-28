@@ -40,8 +40,8 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVCalculoLoop|int|&check;|&check;|||
-|XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo](#TBCalculo]||
-|XVLoopColuna|int|&#x2610;|&#x2610;|[TBLoopColuna](#TBLoopColuna]||
+|XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo](#TBCalculo)||
+|XVLoopColuna|int|&#x2610;|&#x2610;|[TBLoopColuna](#TBLoopColuna)||
 |NUIteracao|int|&#x2610;|&#x2610;|||
 |DEValor|varchar|&#x2610;|&#x2610;|||
 |DTInclusao|datetime|&#x2610;|&#x2610;|||
@@ -55,8 +55,8 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVLoopColuna|int|&check;|&check;|||
-|XVMecanismoLoop|int|&#x2610;|&#x2610;|[TBMecanismoLoop](##TBMecanismoLoop]||
-|XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado]||
+|XVMecanismoLoop|int|&#x2610;|&#x2610;|[TBMecanismoLoop](#TBMecanismoLoop)||
+|XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado)||
 |NMVariavel|varchar|&#x2610;|&#x2610;|||
 |DELegenda|varchar|&#x2610;|&#x2610;|||
 |DESignificado|varchar|&#x2610;|&#x2610;|||
@@ -76,8 +76,8 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVCalculoFormula|int|&check;|&check;|||
-|XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo](#TBCalculo]||
-|XVMecanismoFormula|int|&#x2610;|&#x2610;|[TBMecanismoFormula](#TBMecanismoFormula]||
+|XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo](#TBCalculo)||
+|XVMecanismoFormula|int|&#x2610;|&#x2610;|[TBMecanismoFormula](#TBMecanismoFormula)||
 |DEValor|varchar|&#x2610;|&#x2610;|||
 |FLComputarCorrecaoMonetaria|int|&#x2610;|&#x2610;|||
 |FLComputarJuros|int|&#x2610;|&#x2610;|||
@@ -87,8 +87,8 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVCalculoEntrada|int|&check;|&check;|||
-|XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo](#TBCalculo]||
-|XVMecanismoEntrada|int|&#x2610;|&#x2610;|[TBMecanismoEntrada](#TBMecanismoEntrada]||
+|XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo](#TBCalculo)||
+|XVMecanismoEntrada|int|&#x2610;|&#x2610;|[TBMecanismoEntrada](#TBMecanismoEntrada)||
 |DEValor|varchar|&#x2610;|&#x2610;|||
 
 ## TBMecanismoLoop
@@ -96,8 +96,8 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVMecanismoLoop|int|&check;|&check;|||
-|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo]||
-|XVTipoIncremento|int|&#x2610;|&#x2610;|[TBTipoIncremento](#TBTipoIncremento]||
+|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo)||
+|XVTipoIncremento|int|&#x2610;|&#x2610;|[TBTipoIncremento](#TBTipoIncremento)||
 |VLIncremento|smallint|&#x2610;|&#x2610;|||
 |NMVariavelInicial|varchar|&#x2610;|&#x2610;|||
 |NMVariavelFinal|varchar|&#x2610;|&#x2610;|||
@@ -110,8 +110,8 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVMecanismoFormula|int|&check;|&check;|||
-|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo]||
-|XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado]||
+|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo)||
+|XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado)||
 |NMVariavel|varchar|&#x2610;|&#x2610;|||
 |DELegenda|varchar|&#x2610;|&#x2610;|||
 |DESignificado|varchar|&#x2610;|&#x2610;|||
@@ -129,9 +129,9 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVMecanismoEntrada|int|&check;|&check;|||
-|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo]||
-|XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado]||
-|XVTabelaGenerica|int|&#x2610;|&#x2610;|[TBTabelaGenerica](#TBTabelaGenerica]||
+|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo)||
+|XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado)||
+|XVTabelaGenerica|int|&#x2610;|&#x2610;|[TBTabelaGenerica](#TBTabelaGenerica)||
 |NMVariavel|varchar|&#x2610;|&#x2610;|||
 |DELegenda|varchar|&#x2610;|&#x2610;|||
 |DESignificado|varchar|&#x2610;|&#x2610;|||
@@ -149,7 +149,7 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVItem|int|&check;|&check;|||
-|XVTabelaGenerica|int|&#x2610;|&#x2610;|[TBTabelaGenerica](#TBTabelaGenerica]||
+|XVTabelaGenerica|int|&#x2610;|&#x2610;|[TBTabelaGenerica](#TBTabelaGenerica)||
 |DEItem|nvarchar|&#x2610;|&#x2610;|||
 |DTInclusao|datetime|&#x2610;|&#x2610;|||
 |TSLinha|timestamp|&#x2610;|&#x2610;|||
@@ -160,7 +160,7 @@ classDiagram
 |-|-|-|-|-|-|
 |XVSoldoGap|int|&check;|&check;|||
 |NUAno|int|&#x2610;|&#x2610;|||
-|XVPatente|int|&#x2610;|&#x2610;|[TBPatente](#TBPatente]||
+|XVPatente|int|&#x2610;|&#x2610;|[TBPatente](#TBPatente)||
 |VLSoldo|decimal|&#x2610;|&#x2610;|||
 |VLGAPI|decimal|&#x2610;|&#x2610;|||
 |VLGAPII|decimal|&#x2610;|&#x2610;|||
@@ -174,7 +174,7 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVCalculo|int|&check;|&check;|||
-|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo]||
+|XVMecanismo|int|&#x2610;|&#x2610;|[TBMecanismo](#TBMecanismo)||
 |DTExecucao|datetime|&#x2610;|&#x2610;|||
 |NMCalculo|varchar|&#x2610;|&#x2610;|||
 |NUVersao|int|&#x2610;|&#x2610;|||
@@ -183,7 +183,7 @@ classDiagram
 |TPEstagioCalculo|smallint|&#x2610;|&#x2610;|||
 |DTInclusao|datetime|&#x2610;|&#x2610;|||
 |TSLinha|timestamp|&#x2610;|&#x2610;|||
-|XVCalculoLote|int|&#x2610;|&#x2610;|[TBCalculoLote](#TBCalculoLote]||
+|XVCalculoLote|int|&#x2610;|&#x2610;|[TBCalculoLote](#TBCalculoLote)||
 
 ## RHU_CONTRACHEQUES
 
@@ -248,7 +248,7 @@ classDiagram
 |Parentesco|int|&#x2610;|&#x2610;|||
 |Parentesco_Descr|varchar|&#x2610;|&#x2610;|||
 |QTVerbas|int|&#x2610;|&#x2610;|||
-|FTP_ID|int|&#x2610;|&#x2610;|[LOG_FTP](#LOG_FTP]||
+|FTP_ID|int|&#x2610;|&#x2610;|[LOG_FTP](#LOG_FTP)||
 |DTInclusao|datetime|&#x2610;|&#x2610;|||
 |FLUso|bit|&#x2610;|&#x2610;|||
 
@@ -257,7 +257,7 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |ID|int|&check;|&#x2610;|||
-|MOEDA_ID|int|&#x2610;|&#x2610;|[GER_MOEDA](#GER_MOEDA]||
+|MOEDA_ID|int|&#x2610;|&#x2610;|[GER_MOEDA](#GER_MOEDA)||
 |REFERENCIA|int|&#x2610;|&#x2610;|||
 |VALOR_INICIAL|numeric|&#x2610;|&#x2610;|||
 |FATOR_CONVERSAO|numeric|&#x2610;|&#x2610;|||
@@ -274,7 +274,7 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |ID|int|&check;|&check;|||
-|INDICE_ID|int|&#x2610;|&#x2610;|[GER_INDICE](#GER_INDICE]||
+|INDICE_ID|int|&#x2610;|&#x2610;|[GER_INDICE](#GER_INDICE)||
 |REFERENCIA|int|&#x2610;|&#x2610;|||
 |REFERENCIA_FINAL|int|&#x2610;|&#x2610;|||
 |FAIXA_INI|numeric|&#x2610;|&#x2610;|||
@@ -293,14 +293,14 @@ classDiagram
 |ID|int|&check;|&check;|||
 |REFERENCIA|int|&#x2610;|&#x2610;|||
 |VALOR|numeric|&#x2610;|&#x2610;|||
-|INDICE_ID|int|&#x2610;|&#x2610;|[GER_INDICE](#GER_INDICE]||
+|INDICE_ID|int|&#x2610;|&#x2610;|[GER_INDICE](#GER_INDICE)||
 
 ## GER_CARGO_VALOR
 
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |ID|int|&check;|&#x2610;|||
-|CARGO_ID|int|&#x2610;|&#x2610;|[GER_CARGO](#GER_CARGO]||
+|CARGO_ID|int|&#x2610;|&#x2610;|[GER_CARGO](#GER_CARGO)||
 |REMUNERACAO_ID|int|&#x2610;|&#x2610;|||
 |REFERENCIA|int|&#x2610;|&#x2610;|||
 |VALOR|numeric|&#x2610;|&#x2610;|||
