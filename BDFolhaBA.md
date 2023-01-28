@@ -55,7 +55,7 @@ classDiagram
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
 |-|-|-|-|-|-|
 |XVLoopColuna|int|&check;|&check;|||
-|XVMecanismoLoop|int|&#x2610;|&#x2610;|[TBMecanismoLoop](#TBMecanismoLoop]||
+|XVMecanismoLoop|int|&#x2610;|&#x2610;|[TBMecanismoLoop](##TBMecanismoLoop]||
 |XVTipoDado|int|&#x2610;|&#x2610;|[TBTipoDado](#TBTipoDado]||
 |NMVariavel|varchar|&#x2610;|&#x2610;|||
 |DELegenda|varchar|&#x2610;|&#x2610;|||
