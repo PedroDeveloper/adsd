@@ -38,7 +38,7 @@ classDiagram
 
 ## TBCalculoLoop
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
-|-|-|-|-|-|
+|-|-|-|-|-|-|
 |XVCalculoLoop|int|&check;|&check;|||
 |XVCalculo|int|&#x2610;|&#x2610;|[TBCalculo]||
 |XVLoopColuna|int|&#x2610;|&#x2610;|[TBLoopColuna]||
