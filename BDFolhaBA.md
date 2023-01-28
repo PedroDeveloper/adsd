@@ -38,7 +38,8 @@ graph LR
 		end
 
 	end
-click v12 href "./#TBMecanismoFormula"
+click v12 href "#TBMecanismoFormula"
+
 
 ```
 <br/>
