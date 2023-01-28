@@ -1,51 +1,1121 @@
-# title
-teste
-
-<br/>
-
-
-|aa|aa|
-|--|--|
-|AA|aa|
+<style>
+svg {
+    width: auto !important;
+}
+</style>
 
 ```mermaid
-graph LR
-%%{ init: { 'theme': 'neutral', 'flowchart': { 'useMaxWidth': false, 'curve': 'basis' }}}%%
+classDiagram
+	class TBCalculoLoop{
+		+int XVCalculoLoop
+		+int XVCalculo
+		+int XVLoopColuna
+		+int NUIteracao
+		+varchar DEValor
+		+datetime DTInclusao
+		+datetime DTAtualizacao
+		+int FLComputarJuros
+		+int FLComputarCorrecaoMonetaria
+		+bit FLRegistroEditado
+	}
 
-	subgraph sNobleJournal
-		subgraph -loop- current1
-			v9["v9<br/>InitCumulativeSum(0)"]
+	class TBLoopColuna{
+		+int XVLoopColuna
+		+int XVMecanismoLoop
+		+int XVTipoDado
+		+varchar NMVariavel
+		+varchar DELegenda
+		+varchar DESignificado
+		+varchar DEFormula
+		+smallint NUOrdem
+		+varchar DEMascara
+		+bit FLMostrar
+		+datetime DTInclusao
+		+timestamp TSLinha
+		+varchar DEOrientacao
+		+char FLHabilitarEdicao
+		+bit FLMostrarEdicao
+		+bit TPChamadaExecucao
+	}
 
-			v11 ===> v12
-			linkStyle 0 stroke:#904
-			v12["v12\nF_.LogicalNot(v11)"]
+	class TBCalculoFormula{
+		+int XVCalculoFormula
+		+int XVCalculo
+		+int XVMecanismoFormula
+		+varchar DEValor
+		+int FLComputarCorrecaoMonetaria
+		+int FLComputarJuros
+	}
 
-			v10 ===> v11
-			linkStyle 1 stroke:#991
-			v11["v11<br/>F_.LogicalEq(current1.AccountCode, v10)"]
+	click TBCalculoFormula href "./#TBCalculoFormula"
 
-			v10["v10<br/>current1.CounterParty"]
+	class TBCalculoEntrada{
+		+int XVCalculoEntrada
+		+int XVCalculo
+		+int XVMecanismoEntrada
+		+varchar DEValor
+	}
 
-			subgraph 1ifv12["-if- v12"]
-				v13 ===> v14
-				linkStyle 2 stroke:#992
-				v14["v14<br/>AddToCumulativeSum(0, v13, '1000')"]
+	class TBMecanismoLoop{
+		+int XVMecanismoLoop
+		+int XVMecanismo
+		+int XVTipoIncremento
+		+smallint VLIncremento
+		+varchar NMVariavelInicial
+		+varchar NMVariavelFinal
+		+int XVMecanismoLoopBase
+		+datetime DTInclusao
+		+timestamp TSLinha
+	}
 
-				v13["v13<br/>current1.TransactionAmount"]
+	class TBMecanismoFormula{
+		+int XVMecanismoFormula
+		+int XVMecanismo
+		+int XVTipoDado
+		+varchar NMVariavel
+		+varchar DELegenda
+		+varchar DESignificado
+		+varchar DEFormula
+		+smallint NUOrdem
+		+varchar DEMascara
+		+char TPExecucao
+		+datetime DTInclusao
+		+timestamp TSLinha
+		+varchar DEOrientacao
+		+tinyint TPChamadaExecucao
+	}
 
-			end
+	class TBMecanismoEntrada{
+		+int XVMecanismoEntrada
+		+int XVMecanismo
+		+int XVTipoDado
+		+int XVTabelaGenerica
+		+varchar NMVariavel
+		+varchar DELegenda
+		+varchar DESignificado
+		+smallint NUOrdem
+		+smallint NUTamanho
+		+varchar DEMascara
+		+datetime DTInclusao
+		+timestamp TSLinha
+		+varchar DEOrientacao
+		+bit FLVisivel
+		+int required
+	}
 
-		end
+	class TBTabelaGenericaItem{
+		+int XVItem
+		+int XVTabelaGenerica
+		+nvarchar DEItem
+		+datetime DTInclusao
+		+timestamp TSLinha
+	}
 
-	end
-click v12 href "/#TBMecanismoFormula" target="_parent"
+	class TBSoldoGapNovo{
+		+int XVSoldoGap
+		+int NUAno
+		+int XVPatente
+		+decimal VLSoldo
+		+decimal VLGAPI
+		+decimal VLGAPII
+		+decimal VLGAPIII
+		+decimal VLGAPIV
+		+decimal VLGAPV
+		+varchar DTMesFolha
+	}
 
+	class TBCalculo{
+		+int XVCalculo
+		+int XVMecanismo
+		+datetime DTExecucao
+		+varchar NMCalculo
+		+int NUVersao
+		+varchar DECalculo
+		+varchar CDUsuario
+		+smallint TPEstagioCalculo
+		+datetime DTInclusao
+		+timestamp TSLinha
+		+int XVCalculoLote
+	}
 
+	class RHU_CONTRACHEQUES{
+		+int ID
+		+int CodigoArquivo
+		+varchar CodigoArquivo_Descr
+		+int TipoFolha
+		+varchar TipoFolha_Descr
+		+int Data_Referencia
+		+int Data_Pagamento
+		+int Orgao
+		+varchar Orgao_Sigla
+		+varchar Matricula
+		+varchar CodigoServidorOuPensionista
+		+varchar CodigoServidorOuPensionista_Descr
+		+varchar NomeBeneficiario
+		+varchar CPF
+		+varchar Nascimento
+		+int UnidadeOrcamentaria
+		+varchar UnidadeOrcamentaria_Descr
+		+int LocalTrabalho
+		+varchar LocalTrabalho_Descr
+		+varchar Admissao
+		+int SituacaoFuncional
+		+varchar SituacaoFuncional_Descr
+		+varchar DataSituacao
+		+int CategoriaFuncional
+		+varchar CategoriaFuncional_Descr
+		+int CargoPermanente
+		+varchar CargoPermanente_Descr
+		+varchar CargaHoraria
+		+int GrupoOcupacional
+		+varchar GrupoOcupacional_Descr
+		+varchar NivelNovoCargo
+		+varchar ClasseNovoCargo
+		+int RefSalarialNovoCargo
+		+varchar PadraoNovoCargo
+		+varchar GrauNovoCargo
+		+int TipoRemuneracao
+		+varchar TipoRemuneracao_Descr
+		+varchar SalarioBase
+		+varchar TipoCargoTemporario
+		+varchar TipoCargoTemporario_Descr
+		+int CodigoCargoTemporario
+		+varchar CodigoCargoTemporario_Descr
+		+varchar TipoEconomicoFuncIncorporada
+		+varchar TipoEconomicoFuncIncorporada_Descr
+		+int FuncaoIncorporada
+		+varchar FuncaoIncorporada_Descr
+		+int Estabilidade
+		+varchar Estabilidade_Descr
+		+varchar EstabilidadePercentual
+		+varchar NomePensionista
+		+varchar CPF_Pensionista
+		+varchar NascimentoPensionista
+		+varchar InicioPensao
+		+varchar FinalPensao
+		+int Pensao
+		+varchar Pensao_Descr
+		+int Parentesco
+		+varchar Parentesco_Descr
+		+int QTVerbas
+		+int FTP_ID
+		+datetime DTInclusao
+		+bit FLUso
+	}
+
+	class GER_MOEDA_VALOR{
+		+int ID
+		+int MOEDA_ID
+		+int REFERENCIA
+		+numeric VALOR_INICIAL
+		+numeric FATOR_CONVERSAO
+		+numeric CORRECAO_MONETARIA
+		+numeric VALOR_ATUALIZADO
+		+numeric JUROS_PERCENTUAL
+		+numeric JUROS_VALOR
+		+numeric VALOR_ATUALIZADOxJUROS
+		+varchar DATA_INCLUSAO
+		+varchar DATA_ALTERACAO
+	}
+
+	class GER_INDICE_VALOR{
+		+int ID
+		+int INDICE_ID
+		+int REFERENCIA
+		+int REFERENCIA_FINAL
+		+numeric FAIXA_INI
+		+numeric FAIXA_FIM
+		+numeric VALOR
+		+varchar DATA_INCLUSAO
+		+varchar DATA_ALTERACAO
+		+numeric VALOR_TETO
+		+numeric VALOR_DEDUCAO
+		+numeric VALOR_OUTROS
+	}
+
+	class GER_INDICE_AGRUPADO{
+		+int ID
+		+int REFERENCIA
+		+numeric VALOR
+		+int INDICE_ID
+	}
+
+	class GER_CARGO_VALOR{
+		+int ID
+		+int CARGO_ID
+		+int REMUNERACAO_ID
+		+int REFERENCIA
+		+numeric VALOR
+		+varchar DATA_INCLUSAO
+		+varchar DATA_ALTERACAO
+	}
+
+	class Usuario{
+		+int id
+		+varchar nome
+		+varchar login
+		+varchar senha
+		+varchar eMail
+		+bit usuarioAD
+		+varchar perfil
+	}
+
+	class TEMP_QTD_MAT_DATA_REFERENCIA{
+		+int Data_Referencia
+		+int CENTRALIZADA
+		+int EMPRESAS
+		+int INATIVOS
+		+int PREVIDENCIA
+	}
+
+	class TEMP_QTD_CC_DATA_REFERENCIA{
+		+int Data_Referencia
+		+int CENTRALIZADA
+		+int EMPRESAS
+		+int INATIVOS
+		+int PREVIDENCIA
+	}
+
+	class TEMP_QTD_CC_DATA_ARQUIVO{
+		+varchar Data_arquivo
+		+int CENTRALIZADA
+		+int EMPRESAS
+		+int INATIVOS
+		+int PREVIDENCIA
+	}
+
+	class TEMP_DATA_REFERENCIA{
+		+int Data_Referencia
+	}
+
+	class temp_contracheques_duplicados4{
+		+int Data_Referencia
+		+varchar NomeArquivo
+		+varchar DataFTP
+		+int ID
+		+varchar MATRICULA
+		+int FTP_ID
+		+int TipoFolha
+		+varchar CodigoServidorOuPensionista
+	}
+
+	class temp_contracheques_duplicados3{
+		+int CodigoArquivo
+		+int Data_Referencia
+		+int TipoFolha
+		+varchar Matricula
+		+varchar CodigoServidorOuPensionista
+		+int Orgao
+		+int UnidadeOrcamentaria
+		+int LocalTrabalho
+		+varchar Admissao
+		+int SituacaoFuncional
+		+varchar SalarioBase
+		+int QTVerbas
+		+int quantidade
+	}
+
+	class TEMP_CC_DUPLICADOS_CONFIRMADOS{
+		+varchar Matricula
+		+int Data_Referencia
+		+float SOMA
+		+int QTD_DUPLICADOS
+	}
+
+	class TEMP_CC_DUPLICADOS{
+		+int ID
+		+int Data_Referencia
+		+varchar Matricula
+		+int TipoFolha
+		+varchar CodigoServidorOuPensionista
+	}
+
+	class TEMP_CC_APAGAR{
+		+varchar Matricula
+		+int Data_Referencia
+		+int ID_CONTRACHEQUE_APAGAR
+	}
+
+	class TBVantagemVerba{
+		+int XVVantagemVerba
+		+int CodigoVantagemDesconto
+		+varchar CodigoVantagemDescontoDescr
+		+int GrupoOcupacional
+		+varchar GrupoOcupacional_Descr
+	}
+
+	class TBVantagemContraCheque{
+		+int XVVantagemContraCheque
+		+int CodigoVantagemDesconto
+		+varchar CodigoVantagemDescontoDescr
+		+int GrupoOcupacional
+		+varchar GrupoOcupacional_Descr
+		+varchar CargoPermanente_Descr
+		+varchar CargoPermanente
+	}
+
+	class TBValorFixoRelatorio{
+		+int XVValorFixoRelatorio
+		+varchar DEValor
+		+varchar NMVariavel
+		+bit FLMostrar
+		+int XVTipoDado
+		+varchar DEOrientacao
+	}
+
+	class TBTipoIndiceCorrecaoMonet{
+		+int XVTipoIndiceCorrecaoMonet
+		+varchar DETipo
+	}
+
+	class TBTipoIncremento{
+		+int XVTipoIncremento
+		+varchar NMTipoIncremento
+		+datetime DTInclusao
+		+timestamp TSLinha
+	}
+
+	class TBTipoDado{
+		+int XVTipoDado
+		+varchar NMTipoDado
+		+datetime DTInclusao
+		+timestamp TSLinha
+	}
+
+	class TBTabLimiteConstitucional{
+		+int XVLimite
+		+date DTLimite
+		+decimal VLGovernador
+		+decimal VLDesembargador
+	}
+
+	class TBTabIndiceCorrecaoMonet{
+		+int XVIndice
+		+date DTIndice
+		+decimal VLAbsolutoIndice
+		+varchar NMMoeda
+		+varchar NMIndice
+	}
+
+	class TBTabGAP{
+		+int XVGap
+		+int NUAnoMes
+		+decimal VLSoldo
+		+decimal VLGAP1
+		+decimal VLGAP2
+		+decimal VLGAP3
+		+decimal VLGAP4A
+		+decimal VLGAP5
+		+nvarchar NMPatente
+		+decimal VLGAP
+	}
+
+	class TBTabelaGenerica{
+		+int XVTabelaGenerica
+		+nvarchar NMTabelaGenerica
+		+datetime DTInclusao
+		+timestamp TSLinha
+	}
+
+	class TBSoldoGapPMEstendida{
+		+int XVSoldoGap
+		+int NUAno
+		+int XVPatente
+		+decimal VLSoldo
+		+decimal VLGAPI
+		+decimal VLGAPII
+		+decimal VLGAPIII
+		+decimal VLGAPIV
+		+decimal VLGAPV
+		+varchar DTMesFolha
+	}
+
+	class TBSoldoGap2{
+		+int XVSoldoGap
+		+int NUAno
+		+int XVPatente
+		+decimal VLSoldo
+		+decimal VLGAPI
+		+decimal VLGAPII
+		+decimal VLGAPIII
+		+decimal VLGAPIV
+		+decimal VLGAPV
+		+varchar DTMesFolha
+	}
+
+	class TBSoldoGap{
+		+int XVSoldoGap
+		+int NUAno
+		+int XVPatente
+		+decimal VLSoldo
+		+decimal VLGAPI
+		+decimal VLGAPII
+		+decimal VLGAPIII
+		+decimal VLGAPIV
+		+decimal VLGAPV
+		+varchar DTMesFolha
+	}
+
+	class TBResumoRelatorioValores{
+		+int XVMecanismoRelatorioValores
+		+int XVResumoRelatorio
+		+varchar NMView
+		+varchar NMColunaValor
+		+varchar NMVariaveis
+		+varchar NUPosicaoColuna
+		+varchar NMParemetros
+	}
+
+	class TBResumoRelatorio{
+		+int XVResumoRelatorio
+		+int XVMecanismo
+	}
+
+	class TBRelatorio{
+		+int XVRelatorio
+		+int XVCalculo
+		+varchar NMRelatorio
+		+varchar DEAssinatura
+		+datetime DTCriacao
+		+datetime DTGeracao
+	}
+
+	class TBPatente{
+		+int XVPatente
+		+varchar NMPatente
+		+varchar NMPatenteBD
+		+int NUOrdemPatente
+	}
+
+	class TBParecerSecaoVariavel{
+		+int XVParecerSecaoVariavel
+		+varchar NMVariavel
+		+int XVTipoDado
+		+int XVParecerSecao
+		+varchar DEFormula
+		+varchar DEMascara
+		+varchar NMView
+		+varchar DEVariaveisView
+		+smallint TPChamada
+	}
+
+	class TBParecerSecao{
+		+int XVParecerSecao
+		+int XVParecer
+		+varchar DESecao
+		+smallint NUOrdem
+		+smallint NUAgrupamento
+		+varchar NMTipo
+		+bit FLAtivo
+		+varchar DEResumo
+		+smallint NUFolha
+	}
+
+	class TBParecerOpcao{
+		+int XVParecerOpcao
+		+varchar NMKey
+		+varchar DEValor
+		+int XVCalculo
+		+int XVParecerSecao
+		+int XVParecer
+	}
+
+	class TBParecerDados{
+		+int XVParecerDados
+		+int XVParecerSecaoVariavel
+		+varchar DEValor
+		+varchar CDUsuario
+		+int XVCalculo
+		+int XVParecer
+	}
+
+	class TBParecerCalculo{
+		+varchar DESecao
+		+int XVCalculo
+		+int XVParecer
+		+int NUOrdem
+		+int XVParecerSecao
+	}
+
+	class TBParecer{
+		+int XVParecer
+		+varchar NMParecer
+		+bit FLAtivo
+	}
+
+	class TBOficialPM{
+		+varchar Matricula
+		+varchar CPF
+		+varchar Data_referencia
+	}
+
+	class TBMetaTaxaSelic{
+		+int XVMetaTaxaSelic
+		+datetime DTApuracao
+		+real VLMeta
+		+datetime DTAtualizacao
+	}
+
+	class TBMecanismoRelatorioViews{
+		+int XVMecanismoRelatorio
+		+varchar NMVIew
+		+int XVMecanismoRelatorioViews
+		+varchar NMColuna
+		+varchar NMVariavel
+		+varchar NUPosicao
+		+smallint NUOrdem
+		+varchar NMVariavelLoopPosicaoTotal
+	}
+
+	class TBMecanismoRelatorioParametros{
+		+varchar NMParametro
+		+varchar DEValor
+		+int XVMecanismoRelatorioViews
+	}
+
+	class TBMecanismoRelatorioGenericoTipo{
+		+int XVMecanismoRelatorioGenericoTipo
+		+varchar NMRelatorio
+	}
+
+	class TBMecanismoRelatorioGenericoIteracoes{
+		+int XVMecanismoRelatorioGenericoIteracoes
+		+varchar NMView
+		+int XVMecanismoRelatorioGenerico
+		+int NUOrdem
+		+varchar DEParametros
+		+varchar NMColuna
+		+bit FLSoma
+		+varchar NMVariavelSomatorio
+	}
+
+	class TBMecanismoRelatorioGenerico{
+		+int XVMecanismoRelatorioGenerico
+		+int XVMecanismo
+		+int XVMecanismoRelatorioGenericoTipo
+		+varchar NMTag
+		+int NUTipoIteracao
+	}
+
+	class TBMecanismoRelatorio{
+		+int XVMecanismo
+		+smallint FLTipo
+		+int XVMecanismoRelatorio
+		+varchar NMArquivo
+		+int chaveLoop
+	}
+
+	class TBMecanismo{
+		+int XVMecanismo
+		+varchar NMMecanismo
+		+int NUVersao
+		+varchar DEMecanismo
+		+bit FLCalculoAtivo
+		+bit FLObsoleto
+		+int XVMecanismoBase
+		+datetime DTInclusao
+		+timestamp TSLinha
+	}
+
+	class TBMapeamentoVerbas{
+		+int XVVantagemVerba
+		+int CodigoVantagemDesconto
+		+varchar CodigoVantagemDescontoDescr
+		+int GrupoOcupacional
+		+varchar GrupoOcupacional_Descr
+		+int CargoPermanente
+		+varchar CargoPermanenteDescr
+		+int Tipo
+	}
+
+	class TBLogRelatorio{
+		+int XVLogRelatorio
+		+int XVCalculo
+		+int NUIteracao
+		+varchar DEColor
+		+varchar DEProblema
+		+varchar NMVariavel
+	}
+
+	class TBLimiteConstitucional{
+		+int XVLimite
+		+date DTLimite
+		+decimal VLGovernador
+		+decimal VLDesembargador
+	}
+
+	class TBLeisMagisterio{
+		+int XVLeisMagisterio
+		+date DTLei
+		+varchar DELei
+		+int CDTipoServidor
+		+varchar DETipoServidor
+		+bit FLAlterouCarreira
+	}
+
+	class TBLabelImpressao{
+		+int XVLabelImpressao
+		+int XVMecanismo
+		+varchar NMLabel
+		+int NUOrdem
+		+bit FLMostrar
+		+varchar DEOrientacao
+		+int NULoop
+	}
+
+	class TBJurosSelic{
+		+int XVJurosSelic
+		+date DTApuracao
+		+decimal VLPercentual
+		+varchar CDUsuario
+	}
+
+	class TBJurosFazenda{
+		+int XVJurosFazenda
+		+date DTApuracao
+		+decimal VLPercentual
+		+varchar CDUsuario
+	}
+
+	class TBIRRFFaixas{
+		+int XVIRRFFaixas
+		+int XVIRRF
+		+decimal VLFaixaInicial
+		+decimal VLFaixaFinal
+		+decimal VLAliquota
+		+decimal VLDeducao
+	}
+
+	class TBIRRF{
+		+int XVIRRF
+		+date DTVigenciaInicio
+		+date DTVigenciaFim
+	}
+
+	class TBIndiceCorrecaoMonetaria{
+		+int XVIndiceCorrecaoMonetaria
+		+date DTIndice
+		+int XVTipoIndiceCorrecaoMonet
+		+decimal VLIndice
+		+decimal VLAcumulado
+		+varchar CDUsuario
+	}
+
+	class TBHonorariosIndiceCorrecaoMonetaria{
+		+int XVHonorariosIndiceCorrecaoMonetaria
+		+date DTInicio
+		+date DTFinal
+		+varchar DEIndice
+		+int XVTipoIndiceCorrecaoMonet
+		+int XVCalculo
+	}
+
+	class TBHonorariosAdvocaticios{
+		+int XVHonorariosAdvocaticios
+		+decimal VLCausa
+		+decimal VLPercentual
+		+int XVCalculo
+	}
+
+	class TBCalculoProgresso{
+		+int XVCalculo
+		+decimal NUPorcentagem
+		+datetime DTCriacao
+		+datetime DTAtualizacao
+		+int NUIteracao
+	}
+
+	class TBCalculoLote{
+		+int XVCalculoLote
+		+varchar NMLote
+		+datetime DTCriacao
+		+varchar CDUsuario
+		+int XVMecanismo
+		+varchar DENotificacao
+	}
+
+	class TBCalculoExecucaoStatus{
+		+int XVCalculoExecucaoStatus
+		+int XVCalculo
+		+int FLStatus
+		+datetime DTCriacao
+		+datetime DTAtualizacao
+		+bit FLCalculoEditado
+	}
+
+	class TBCalculoCorrecaoMonetaria{
+		+int XVCalculoCorrecaoMonetaria
+		+int XVCalculo
+		+date DTInicial
+		+date DTFinal
+		+int XVTipoIndiceCorrecaoMonet
+	}
+
+	class TB_AUXILIAR_DIVERSOS{
+		+int XVAuxiliarCalculo
+		+int XVCalculo
+		+int XVMecanismo
+		+varchar NMVariavel
+		+varchar DEValor
+		+datetime DTReferencia
+	}
+
+	class TB_AUXILIAR_CALCULO_ENTRADA{
+		+int XVAuxiliarCalculoEntrada
+		+int XVCalculo
+		+varchar NMVariavel
+		+varchar DEValor
+	}
+
+	class Servidores{
+		+varchar CPF
+		+varchar NomeBeneficiario
+		+varchar Nascimento
+		+varchar Matricula
+		+varchar Admissao
+	}
+
+	class Servidor{
+		+varchar CPF
+		+varchar Matricula
+		+varchar NomeBeneficiario
+		+int Orgao
+		+varchar DataAdmissao
+		+varchar Situacao
+	}
+
+	class RHU_SERVIDORES2{
+		+varchar CPF
+		+varchar Matricula
+		+varchar NomeBeneficiario
+		+varchar Nascimento
+	}
+
+	class RHU_SERVIDORES{
+		+varchar CPF
+		+varchar NomeBeneficiario
+		+varchar Nascimento
+		+varchar Matricula
+	}
+
+	class RHU_SERVIDOR_BKP{
+		+varchar CPF
+		+varchar Matricula
+		+varchar NomeBeneficiario
+		+int Orgao
+		+varchar DataAdmissao
+		+varchar OrgaoDescr
+		+varchar Situacao
+		+varchar DataUltAtualizacao
+		+int FTP_ID
+		+bit Pensionista
+		+int ID
+	}
+
+	class RHU_SERVIDOR{
+		+varchar CPF
+		+varchar Matricula
+		+varchar NomeBeneficiario
+		+int Orgao
+		+varchar DataAdmissao
+		+varchar OrgaoDescr
+		+varchar Situacao
+		+datetime DataUltAtualizacao
+		+int FTP_ID
+		+bit Pensionista
+		+int ID
+	}
+
+	class RHU_ORGAO{
+		+int orgao
+		+varchar orgao_sigla
+	}
+
+	class RHU_CONTRACHEQUES_VD_EXPURGO{
+		+int ID
+		+varchar Tipo
+		+varchar TipoDescr
+		+varchar Consignataria
+		+varchar ConsignatariaDescr
+		+varchar CodigoVantagemDesconto
+		+varchar CodigoVantagemDescontoDescr
+		+varchar NaturezaVantagem
+		+varchar NaturezaVantagemDescr
+		+varchar DuracaoVantagem
+		+varchar HorasVantagem
+		+varchar ValorVantagem
+		+varchar Valor_P
+		+int CONTRACHEQUE_ID
+		+datetime DTInclusao
+	}
+
+	class RHU_CONTRACHEQUES_VD_BKP{
+		+int ID
+		+varchar Tipo
+		+varchar TipoDescr
+		+varchar Consignataria
+		+varchar ConsignatariaDescr
+		+varchar CodigoVantagemDesconto
+		+varchar CodigoVantagemDescontoDescr
+		+varchar NaturezaVantagem
+		+varchar NaturezaVantagemDescr
+		+varchar DuracaoVantagem
+		+varchar HorasVantagem
+		+varchar ValorVantagem
+		+varchar Valor_P
+		+int CONTRACHEQUE_ID
+		+datetime DTInclusao
+	}
+
+	class RHU_CONTRACHEQUES_VD{
+		+int ID
+		+varchar Tipo
+		+varchar TipoDescr
+		+varchar Consignataria
+		+varchar ConsignatariaDescr
+		+varchar CodigoVantagemDesconto
+		+varchar CodigoVantagemDescontoDescr
+		+varchar NaturezaVantagem
+		+varchar NaturezaVantagemDescr
+		+varchar DuracaoVantagem
+		+varchar HorasVantagem
+		+varchar ValorVantagem
+		+varchar Valor_P
+		+int CONTRACHEQUE_ID
+		+datetime DTInclusao
+	}
+
+	class RHU_CONTRACHEQUES_EXPURGO{
+		+int ID
+		+int CodigoArquivo
+		+varchar CodigoArquivo_Descr
+		+int TipoFolha
+		+varchar TipoFolha_Descr
+		+int Data_Referencia
+		+int Data_Pagamento
+		+int Orgao
+		+varchar Orgao_Sigla
+		+varchar Matricula
+		+varchar CodigoServidorOuPensionista
+		+varchar CodigoServidorOuPensionista_Descr
+		+varchar NomeBeneficiario
+		+varchar CPF
+		+varchar Nascimento
+		+int UnidadeOrcamentaria
+		+varchar UnidadeOrcamentaria_Descr
+		+int LocalTrabalho
+		+varchar LocalTrabalho_Descr
+		+varchar Admissao
+		+int SituacaoFuncional
+		+varchar SituacaoFuncional_Descr
+		+varchar DataSituacao
+		+int CategoriaFuncional
+		+varchar CategoriaFuncional_Descr
+		+int CargoPermanente
+		+varchar CargoPermanente_Descr
+		+varchar CargaHoraria
+		+int GrupoOcupacional
+		+varchar GrupoOcupacional_Descr
+		+varchar NivelNovoCargo
+		+varchar ClasseNovoCargo
+		+int RefSalarialNovoCargo
+		+varchar PadraoNovoCargo
+		+varchar GrauNovoCargo
+		+int TipoRemuneracao
+		+varchar TipoRemuneracao_Descr
+		+varchar SalarioBase
+		+varchar TipoCargoTemporario
+		+varchar TipoCargoTemporario_Descr
+		+int CodigoCargoTemporario
+		+varchar CodigoCargoTemporario_Descr
+		+varchar TipoEconomicoFuncIncorporada
+		+varchar TipoEconomicoFuncIncorporada_Descr
+		+int FuncaoIncorporada
+		+varchar FuncaoIncorporada_Descr
+		+int Estabilidade
+		+varchar Estabilidade_Descr
+		+varchar EstabilidadePercentual
+		+varchar NomePensionista
+		+varchar CPF_Pensionista
+		+varchar NascimentoPensionista
+		+varchar InicioPensao
+		+varchar FinalPensao
+		+int Pensao
+		+varchar Pensao_Descr
+		+int Parentesco
+		+varchar Parentesco_Descr
+		+int QTVerbas
+		+int FTP_ID
+		+datetime DTInclusao
+		+bit FLUso
+	}
+
+	class RHU_CONTRACHEQUES_BKP{
+		+int ID
+		+int CodigoArquivo
+		+varchar CodigoArquivo_Descr
+		+int TipoFolha
+		+varchar TipoFolha_Descr
+		+int Data_Referencia
+		+int Data_Pagamento
+		+int Orgao
+		+varchar Orgao_Sigla
+		+varchar Matricula
+		+varchar CodigoServidorOuPensionista
+		+varchar CodigoServidorOuPensionista_Descr
+		+varchar NomeBeneficiario
+		+varchar CPF
+		+varchar Nascimento
+		+int UnidadeOrcamentaria
+		+varchar UnidadeOrcamentaria_Descr
+		+int LocalTrabalho
+		+varchar LocalTrabalho_Descr
+		+varchar Admissao
+		+int SituacaoFuncional
+		+varchar SituacaoFuncional_Descr
+		+varchar DataSituacao
+		+int CategoriaFuncional
+		+varchar CategoriaFuncional_Descr
+		+int CargoPermanente
+		+varchar CargoPermanente_Descr
+		+varchar CargaHoraria
+		+int GrupoOcupacional
+		+varchar GrupoOcupacional_Descr
+		+varchar NivelNovoCargo
+		+varchar ClasseNovoCargo
+		+int RefSalarialNovoCargo
+		+varchar PadraoNovoCargo
+		+varchar GrauNovoCargo
+		+int TipoRemuneracao
+		+varchar TipoRemuneracao_Descr
+		+varchar SalarioBase
+		+varchar TipoCargoTemporario
+		+varchar TipoCargoTemporario_Descr
+		+int CodigoCargoTemporario
+		+varchar CodigoCargoTemporario_Descr
+		+varchar TipoEconomicoFuncIncorporada
+		+varchar TipoEconomicoFuncIncorporada_Descr
+		+int FuncaoIncorporada
+		+varchar FuncaoIncorporada_Descr
+		+int Estabilidade
+		+varchar Estabilidade_Descr
+		+varchar EstabilidadePercentual
+		+varchar NomePensionista
+		+varchar CPF_Pensionista
+		+varchar NascimentoPensionista
+		+varchar InicioPensao
+		+varchar FinalPensao
+		+int Pensao
+		+varchar Pensao_Descr
+		+int Parentesco
+		+varchar Parentesco_Descr
+		+int QTVerbas
+		+int FTP_ID
+		+datetime DTInclusao
+	}
+
+	class LOG_INDICE_AGRUPADO{
+		+int Id
+		+datetime DataAcao
+		+int OldReferencia
+		+int NewReferencia
+		+decimal OldValor
+		+decimal NewValor
+		+nvarchar Acao
+		+int usuarioId
+	}
+
+	class LOG_FTP{
+		+int ID
+		+varchar NomeArquivo
+		+varchar DataInicio
+		+varchar DataFinal
+		+int QtdContracheques
+		+int QtdVerbas
+	}
+
+	class LOG_APLICACAO{
+		+int ID
+		+varchar DataRegistro
+		+varchar Executavel
+		+varchar Descricao
+		+varchar Usuario
+		+varchar IpSolicitante
+		+varchar Caminho
+		+varchar Token
+		+varchar Autenticado
+		+int FTP_ID
+	}
+
+	class GER_TIPO_RETORNO{
+		+int ID
+		+varchar DESCRICAO
+	}
+
+	class GER_REMUNERACAO{
+		+int ID
+		+varchar DESCRICAO
+		+char PERIODICIDADE
+	}
+
+	class GER_MOEDA{
+		+int ID
+		+varchar DESCRICAO
+		+varchar TIPO
+		+int TIPO_ID
+	}
+
+	class GER_INDICE{
+		+int ID
+		+varchar DESCRICAO
+		+char PERIODICIDADE
+		+int COD_BANCOCENTRAL
+		+varchar TIPO
+		+int TIPO_ID
+	}
+
+	class GER_CARGO{
+		+int ID
+		+varchar DESCRICAO
+		+varchar TIPO
+		+int TIPO_ID
+		+varchar DESCRICAO_CURTA
+	}
+
+	class ChaveAssinatura{
+		+int id
+		+varchar Assinatura
+		+varchar SistemaEmissor
+		+varchar DataRegistro
+	}
+
+	GerCargoValor <|-- GER_CARGO
+	GerIndiceAgrupado <|-- GER_INDICE
+	GerIndiceValor <|-- GER_INDICE
+	GerMoedaValor <|-- GER_MOEDA
+	RhuContracheques <|-- LOG_FTP
+	TBCalculoEntrada <|-- TBCalculo
+	TBCalculoFormula <|-- TBCalculo
+	TBCalculoLoop <|-- TBCalculo
+	TBCalculo <|-- TBCalculoLote
+	TBCalculoLoop <|-- TBLoopColuna
+	TBCalculo <|-- TBMecanismo
+	TBMecanismoEntrada <|-- TBMecanismo
+	TBMecanismoFormula <|-- TBMecanismo
+	TBMecanismoLoop <|-- TBMecanismo
+	TBCalculoEntrada <|-- TBMecanismoEntrada
+	TBCalculoFormula <|-- TBMecanismoFormula
+	TBLoopColuna <|-- TBMecanismoLoop
+	TBSoldoGapNovo <|-- TBPatente
+	TBMecanismoEntrada <|-- TBTabelaGenerica
+	TBTabelaGenericaItem <|-- TBTabelaGenerica
+	TBLoopColuna <|-- TBTipoDado
+	TBMecanismoEntrada <|-- TBTipoDado
+	TBMecanismoFormula <|-- TBTipoDado
+	TBMecanismoLoop <|-- TBTipoIncremento
 ```
-<br/>
-<br/>
-<br/>
 
+<br/><br/><br/>
 ## TBCalculoLoop
 
 |**Name**|**Type**|**Key**|**Auto**|**Parent**|**Description**|
