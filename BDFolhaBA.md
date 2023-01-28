@@ -1,9 +1,3 @@
-<style>
-svg {
-    width: auto !important;
-}
-</style>
-
 ```mermaid
 classDiagram
 	class TBCalculoLoop{
